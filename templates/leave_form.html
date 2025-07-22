@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4">Leave Application Form</h2>
+<form method="POST" novalidate>
+  {{ form.hidden_tag() }}
+
+  <div class="mb-3">
+    {{ form.name.label(class="form-label") }}
+    {{ form.name(class="form-control", placeholder="Your name") }}
+    {% if form.name.errors %}
+      <div class="text-danger">{{ form.name.errors[0] }}</div>
+    {% endif %}
+  </div>
+
+  <div class="mb-3">
+    {{ form.department.label(class="form-label") }}
+    {{ form.department(class="form-control", placeholder="Department") }}
+    {% if form.department.errors %}
+      <div class="text-danger">{{ form.department.errors[0] }}</div>
+    {% endif %}
+  </div>
+
+  <div class="mb-3">
+    {{ form.reason.label(class="form-label") }}
+    {{ form.reason(class="form-control", placeholder="Reason for leave", rows=3) }}
+    {% if form.reason.errors %}
+      <div class="text-danger">{{ form.reason.errors[0] }}</div>
+    {% endif %}
+  </div>
+
+  <div class="mb-3">
+    {{ form.start_date.label(class="form-label") }}
+    {{ form.start_date(class="form-control") }}
+    {% if form.start_date.errors %}
+      <div class="text-danger">{{ form.start_date.errors[0] }}</div>
+    {% endif %}
+  </div>
+
+  <div class="mb-3">
+    {{ form.end_date.label(class="form-label") }}
+    {{ form.end_date(class="form-control") }}
+    {% if form.end_date.errors %}
+      <div class="text-danger">{{ form.end_date.errors[0] }}</div>
+    {% endif %}
+  </div>
+
+  {{ form.submit(class="btn btn-primary") }}
+</form>
+{% endblock %}
